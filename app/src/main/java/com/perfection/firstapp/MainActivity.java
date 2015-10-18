@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class MainActivity extends AppCompatActivity {
 
     //Defining Variables
@@ -30,8 +31,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         //eli's update
         Toast.makeText(getApplicationContext(), "Working!", Toast.LENGTH_SHORT).show();
+
+        //Try to pull it
+        Toast.makeText(getBaseContext(),"Amit", Toast.LENGTH_SHORT).show();
 
         setContentView(R.layout.activity_main);
 
