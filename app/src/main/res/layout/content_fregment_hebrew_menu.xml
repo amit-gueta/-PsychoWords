@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ColorUp"
+    android:id="@+id/mainLayout">
+
+    <TextView
+        android:id="@+id/titleHebrewMenu"
+        android:textSize="30dp"
+        android:textColor="#FF0000"
+        android:gravity="right"
+        android:lineSpacingMultiplier="1.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:text="עברית" />
+
+    <TextView
+        android:id="@+id/sumOfWordsHebtitle"
+        android:textSize="20dp"
+        android:textColor="#FF0000"
+        android:gravity="right"
+        android:lineSpacingMultiplier="1.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="סך הכל מילים:" />
+
+    <TextView
+        android:id="@+id/sumOfWordsHeb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize = "20dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="2000"
+        android:layout_marginRight="10dp"
+        android:layout_alignTop="@+id/sumOfWordsHebtitle"
+        android:layout_toLeftOf="@+id/sumOfWordsHebtitle"
+        android:layout_toStartOf="@+id/sumOfWordsHebtitle" />
+
+    <TextView
+        android:id="@+id/sumOfRemainWordsHebtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize = "20dp"
+        android:textColor="#FF0000"
+        android:gravity="right"
+        android:text="מילים שנותרו:"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/sumOfWordsHebtitle"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize = "20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="450"
+        android:layout_marginRight="10dp"
+        android:id="@+id/sumOfRemainWordsHeb"
+        android:layout_below="@+id/sumOfWordsHeb"
+        android:layout_toLeftOf="@+id/sumOfRemainWordsHebtitle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize = "20dp"
+        android:textColor="#FF0000"
+        android:gravity="right"
+        android:text="מילים שלמדתי:"
+        android:id="@+id/sumOfLearnedWordstitle"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/sumOfRemainWordsHebtitle"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize = "20dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="1580"
+        android:id="@+id/sumOfLearnedWords"
+        android:layout_toLeftOf="@id/sumOfLearnedWordstitle"
+        android:layout_below="@id/sumOfRemainWordsHeb"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize = "20dp"
+        android:textColor="#FF0000"
+        android:gravity="right"
+        android:text="אחוז התקדמות:"
+        android:id="@+id/remainPrecentstitle"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/sumOfLearnedWordstitle" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize = "20dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="צריך לחשב"
+        android:id="@+id/remainPrecents"
+        android:layout_toLeftOf="@id/remainPrecentstitle"
+        android:layout_below="@id/sumOfLearnedWords"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="התחלה"
+        android:id="@+id/startButton"
+        android:layout_below="@+id/remainPrecentstitle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="100dp" />
+
+    <Button
+        android:layout_marginLeft="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="מילים שלמדתי"
+        android:id="@+id/button2"
+        android:layout_alignTop="@+id/startButton"
+        android:layout_toLeftOf="@+id/sumOfRemainWordsHebtitle"
+        android:layout_toStartOf="@+id/sumOfRemainWordsHebtitle" />
+
+
+</RelativeLayout>

@@ -2,11 +2,14 @@ package com.perfection.firstapp;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +22,7 @@ public class ContentFragment extends Fragment {
     public static final String TAG = "HOME";
     private int counter = 0;
     private TextView tv1, tv2, tv3;
+    private Button hebrewButton,englishButton;
     private View v;
 
 
@@ -30,9 +34,24 @@ public class ContentFragment extends Fragment {
     }
 
     private void handleClicks() {
+/*
         tv1 = (TextView) v.findViewById(R.id.textView1);
         tv2 = (TextView) v.findViewById(R.id.textView2);
         tv3 = (TextView) v.findViewById(R.id.textView3);
+*/
+
+        hebrewButton = (Button) v.findViewById(R.id.hebrewButton);
+        englishButton = (Button) v.findViewById(R.id.englishButton);
+
+        hebrewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), HebrewMenuActivity.class);
+                getActivity().startActivity(myIntent);
+            }
+        });
+
+        /*
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +72,8 @@ public class ContentFragment extends Fragment {
                 }
             }
         });
+*/
+
 
     }
 
@@ -65,7 +86,6 @@ public class ContentFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putString("current", tv3.getText().toString());
         }
 
     @Override
@@ -73,8 +93,6 @@ public class ContentFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null) {
             // Restore last state for checked position.
-            tv3.setText(savedInstanceState.getString("current"));
-            counter = Integer.parseInt(savedInstanceState.getString("current"));
         }
     }
 
