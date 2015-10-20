@@ -22,7 +22,8 @@ import java.util.List;
 public class ContentFragmentHebrewMenu extends Fragment {
     public static final String TAG = "HOME";
     private int sumOfWords,sumOfRemainWords,learnedWords,progressPrecent;
-    private TextView sumOfWordsView,sumOfRemainWordsView,learnedWordsView,progressPrecentView ;
+    private TextView sumOfWordsView,sumOfRemainWordsView,learnedWordsView,progressPrecentView,sumOfWordsTitle,sumOfRemainWordsTitle,learnedWordsTitle,
+                        progressPrecentTitle ;
     private View v;
 
 
@@ -30,8 +31,11 @@ public class ContentFragmentHebrewMenu extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.content_fregment_hebrew_menu,container,false);
 
-        //Declare all graphic elemnts
+        sumOfWords = 2000;
+        learnedWords = 420;
+        sumOfRemainWords = sumOfWords - learnedWords ;
 
+        FieldsUpdate(v);
 
 
         return v;
@@ -39,6 +43,11 @@ public class ContentFragmentHebrewMenu extends Fragment {
 
 
     private void FieldsUpdate(View v){
+
+        sumOfWordsTitle = (TextView) v.findViewById(R.id.sumOfWordsHebtitle);
+        sumOfRemainWordsTitle = (TextView) v.findViewById(R.id.sumOfLearnedWordstitle);
+        learnedWordsTitle = (TextView) v.findViewById(R.id.sumOfLearnedWordstitle);
+        progressPrecentTitle = (TextView) v.findViewById(R.id.progressPrecentTitle);
         sumOfRemainWordsView = (TextView) v.findViewById(R.id.sumOfRemainWordsHeb);
         sumOfWordsView = (TextView) v.findViewById(R.id.sumOfWordsHeb);
         learnedWordsView = (TextView) v.findViewById(R.id.sumOfLearnedWords);

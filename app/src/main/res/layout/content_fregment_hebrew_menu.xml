@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:textSize = "20dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="2000"
+        android:text=""
         android:layout_marginRight="10dp"
         android:layout_alignTop="@+id/sumOfWordsHebtitle"
         android:layout_toLeftOf="@+id/sumOfWordsHebtitle"
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="450"
+        android:text=""
         android:layout_marginRight="10dp"
         android:id="@+id/sumOfRemainWordsHeb"
         android:layout_below="@+id/sumOfWordsHeb"
@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="1580"
+        android:text=""
         android:id="@+id/sumOfLearnedWords"
         android:layout_toLeftOf="@id/sumOfLearnedWordstitle"
         android:layout_below="@id/sumOfRemainWordsHeb"/>
@@ -100,7 +100,7 @@
         android:textColor="#FF0000"
         android:gravity="right"
         android:text="אחוז התקדמות:"
-        android:id="@+id/progressPrecent"
+        android:id="@+id/progressPrecentTitle"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/sumOfLearnedWordstitle" />
 
@@ -111,9 +111,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="צריך לחשב"
-        android:id="@+id/remainPrecents"
-        android:layout_toLeftOf="@id/progressPrecent"
+        android:text=""
+        android:id="@+id/progressPrecent"
+        android:layout_toLeftOf="@id/progressPrecentTitle"
         android:layout_below="@id/sumOfLearnedWords"/>
 
     <Button
@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:text="התחלה"
         android:id="@+id/startButton"
-        android:layout_below="@+id/progressPrecent"
+        android:layout_below="@+id/progressPrecentTitle"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="50dp"
