@@ -1,0 +1,28 @@
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/firstUnit"
+        android:title="חלק ראשון"/>
+
+    <item
+        android:id="@+id/SecondUnit"
+        android:title="חלק שני"/>
+
+    <item
+        android:id="@+id/thirdUnit"
+        android:title="חלק שלישי"/>
+
+    <item
+        android:id="@+id/forthUnit"
+        android:title="חלק רביעי"/>
+
+    <item
+        android:id="@+id/fifthUnit"
+        android:title="חלק חמישי"/>
+
+    <item
+        android:id="@+id/sixthUnit"
+        android:title="חלק שישי"/>
+
+</menu>

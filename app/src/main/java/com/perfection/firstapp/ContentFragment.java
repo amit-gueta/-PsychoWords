@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +26,7 @@ public class ContentFragment extends Fragment {
     private View v;
     private int sumOfWords,sumOfRemainWords,learnedWords,progressPrecent;
     private TextView sumOfWordsView,sumOfRemainWordsView,learnedWordsView,progressPrecentView,sumOfWordsTitle,sumOfRemainWordsTitle,learnedWordsTitle,
-            progressPrecentTitle ;
+            progressPrecentTitle, startButton, learnedWordsButton ;
 
 
     @Override
@@ -36,7 +38,7 @@ public class ContentFragment extends Fragment {
         sumOfRemainWords = sumOfWords - learnedWords ;
 
         FieldsUpdate(v);
-
+        handleClicks();
 
         return v;
     }
@@ -52,6 +54,7 @@ public class ContentFragment extends Fragment {
         learnedWordsView = (TextView) v.findViewById(R.id.sumOfLearnedWords);
         progressPrecentView = (TextView) v.findViewById(R.id.progressPrecent);
 
+
         sumOfWordsView.setText("" + sumOfWords);
         sumOfRemainWordsView.setText("" + sumOfRemainWords);
         learnedWordsView.setText("" + learnedWords);
@@ -62,6 +65,29 @@ public class ContentFragment extends Fragment {
 
     private void handleClicks() {
 
+        startButton = (TextView) v.findViewById(R.id.startButton);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup = new PopupMenu(v.getContext() ,startButton);
+                popup.getMenuInflater()
+                        .inflate(R.menu.units_menu,popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        /*Toast.makeText(
+                                ,
+                                "You Clicked : " + item.getTitle(),
+                                Toast.LENGTH_SHORT
+                        ).show();*/
+                        return true;
+                    }
+                });
+
+                popup.show(); //showing popup menu
+            }
+
+        });
 
 
 /*
