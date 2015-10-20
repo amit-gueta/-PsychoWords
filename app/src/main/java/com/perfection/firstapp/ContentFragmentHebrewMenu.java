@@ -21,6 +21,8 @@ import java.util.List;
  */
 public class ContentFragmentHebrewMenu extends Fragment {
     public static final String TAG = "HOME";
+    private int sumOfWords,sumOfRemainWords,learnedWords,progressPrecent;
+    private TextView sumOfWordsView,sumOfRemainWordsView,learnedWordsView,progressPrecentView ;
     private View v;
 
 
@@ -35,6 +37,19 @@ public class ContentFragmentHebrewMenu extends Fragment {
         return v;
     }
 
+
+    private void FieldsUpdate(View v){
+        sumOfRemainWordsView = (TextView) v.findViewById(R.id.sumOfRemainWordsHeb);
+        sumOfWordsView = (TextView) v.findViewById(R.id.sumOfWordsHeb);
+        learnedWordsView = (TextView) v.findViewById(R.id.sumOfLearnedWords);
+        progressPrecentView = (TextView) v.findViewById(R.id.progressPrecent);
+
+        sumOfWordsView.setText("" + sumOfWords);
+        sumOfRemainWordsView.setText("" + sumOfRemainWords);
+        learnedWordsView.setText("" + learnedWords);
+        progressPrecentView.setText("" + (learnedWords*100)/sumOfWords );
+
+    }
 
 
     @Override
