@@ -75,11 +75,11 @@ public class ContentFragment extends Fragment {
                         .inflate(R.menu.units_menu,popup.getMenu());
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
-                        /*Toast.makeText(
+                        Toast.makeText(getActivity()
                                 ,
                                 "You Clicked : " + item.getTitle(),
                                 Toast.LENGTH_SHORT
-                        ).show();*/
+                        ).show();
                         return true;
                     }
                 });
