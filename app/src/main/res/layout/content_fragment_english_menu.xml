@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
-        android:text="עברית" />
+        android:text="אנגלית" />
 
     <TextView
         android:id="@+id/sumOfWordsHebtitle"
@@ -116,9 +116,7 @@
         android:layout_toLeftOf="@id/progressPrecentTitle"
         android:layout_below="@id/sumOfLearnedWords"/>
 
-    <TextView
-        android:textSize="30dp"
-        android:clickable="true"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="התחלה"
@@ -129,17 +127,15 @@
         android:layout_marginRight="50dp"
         android:layout_marginTop="100dp" />
 
-    <TextView
-        android:textSize="30dp"
-        android:clickable="true"
+    <Button
+        android:layout_marginLeft="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="מילים שלמדתי"
         android:id="@+id/button2"
         android:layout_alignTop="@+id/startButton"
         android:layout_toLeftOf="@+id/sumOfRemainWordsHebtitle"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toStartOf="@+id/sumOfRemainWordsHebtitle" />
 
 
 </RelativeLayout>

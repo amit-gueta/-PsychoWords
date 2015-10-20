@@ -1,4 +1,4 @@
-package com.perfection.firstapp;
+package com.perfection.firstapp.needtodelete;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.perfection.firstapp.R;
 
 import java.io.Serializable;
 import java.util.List;

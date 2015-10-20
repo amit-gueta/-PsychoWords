@@ -1,10 +1,7 @@
-package com.perfection.firstapp;
+package com.perfection.firstapp.needtodelete;
 
-        import android.app.Fragment;
-        import android.app.FragmentManager;
         import android.app.FragmentTransaction;
         import android.os.Bundle;
-        import android.support.annotation.NonNull;
         import android.support.design.widget.NavigationView;
         import android.support.v4.widget.DrawerLayout;
         import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,9 +10,12 @@ package com.perfection.firstapp;
         import android.view.Menu;
         import android.view.MenuItem;
         import android.view.View;
-        import android.widget.RelativeLayout;
-        import android.widget.TextView;
         import android.widget.Toast;
+
+        import com.perfection.firstapp.ContentFragment;
+        import com.perfection.firstapp.R;
+        import com.perfection.firstapp.SettingsFragment;
+
 /**
  * Created by eli on 10/19/15.
  */

@@ -21,27 +21,51 @@ public class ContentFragment extends Fragment {
 
     public static final String TAG = "HOME";
     private int counter = 0;
-    private TextView tv1, tv2, tv3;
-    private Button hebrewButton,englishButton;
     private View v;
+    private int sumOfWords,sumOfRemainWords,learnedWords,progressPrecent;
+    private TextView sumOfWordsView,sumOfRemainWordsView,learnedWordsView,progressPrecentView,sumOfWordsTitle,sumOfRemainWordsTitle,learnedWordsTitle,
+            progressPrecentTitle ;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.content_fragment,container,false);
-        handleClicks();
+
+        sumOfWords = 2000;
+        learnedWords = 420;
+        sumOfRemainWords = sumOfWords - learnedWords ;
+
+        FieldsUpdate(v);
+
+
         return v;
     }
 
-    private void handleClicks() {
-/*
-        tv1 = (TextView) v.findViewById(R.id.textView1);
-        tv2 = (TextView) v.findViewById(R.id.textView2);
-        tv3 = (TextView) v.findViewById(R.id.textView3);
-*/
+    private void FieldsUpdate(View v){
 
+        sumOfWordsTitle = (TextView) v.findViewById(R.id.sumOfWordsHebtitle);
+        sumOfRemainWordsTitle = (TextView) v.findViewById(R.id.sumOfLearnedWordstitle);
+        learnedWordsTitle = (TextView) v.findViewById(R.id.sumOfLearnedWordstitle);
+        progressPrecentTitle = (TextView) v.findViewById(R.id.progressPrecentTitle);
+        sumOfRemainWordsView = (TextView) v.findViewById(R.id.sumOfRemainWordsHeb);
+        sumOfWordsView = (TextView) v.findViewById(R.id.sumOfWordsHeb);
+        learnedWordsView = (TextView) v.findViewById(R.id.sumOfLearnedWords);
+        progressPrecentView = (TextView) v.findViewById(R.id.progressPrecent);
+
+        sumOfWordsView.setText("" + sumOfWords);
+        sumOfRemainWordsView.setText("" + sumOfRemainWords);
+        learnedWordsView.setText("" + learnedWords);
+        progressPrecentView.setText("" + (learnedWords * 100) / sumOfWords);
+
+    }
+
+
+    private void handleClicks() {
+
+
+
+/*
         hebrewButton = (Button) v.findViewById(R.id.hebrewButton);
-        englishButton = (Button) v.findViewById(R.id.englishButton);
 
         hebrewButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +75,7 @@ public class ContentFragment extends Fragment {
             }
         });
 
-        /*
+
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
