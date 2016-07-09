@@ -6,21 +6,21 @@
 
         <item
             android:id="@+id/home"
-            android:checked="false"
+            android:checked="true"
             android:icon="@drawable/ic_home"
-            android:title="home" />
+            android:title="Home" />
 
         <item
             android:id="@+id/mail"
             android:checked="false"
             android:icon="@drawable/ic_event"
-            android:title="mail" />
+            android:title="Mail" />
 
         <item
             android:id="@+id/settings"
             android:checked="false"
             android:icon="@drawable/ic_settings"
-            android:title="settings" />
+            android:title="Settings" />
 
     </group>
 </menu>

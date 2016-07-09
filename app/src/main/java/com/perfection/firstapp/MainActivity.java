@@ -3,6 +3,7 @@ package com.perfection.firstapp;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -10,12 +11,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
+import com.lorentzos.flingswipe.SwipeFlingAdapterView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,29 +31,103 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-    private ContentFragment mFragment = new ContentFragment();
-    FragmentTransaction fragmentTransaction = null;
+    private ArrayList<String> al;
+    private ArrayAdapter<String> arrayAdapter;
+    private int i;
+
+    @InjectView(R.id.frame) SwipeFlingAdapterView flingContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        if (savedInstanceState != null) {
-            //Restore the fragment's instance
-            mFragment = (ContentFragment) getFragmentManager().getFragment(
-                    savedInstanceState, mFragment.TAG);
-        }
-        else {
-            fragmentTransaction = getFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frame, mFragment, mFragment.TAG).
-                    addToBackStack(null).
-                    commit();
-        }
         setNavDrawer();
 
         //Set first item checked
         navigationView.getMenu().getItem(0).setChecked(true);
+
+
+        ButterKnife.inject(this);
+
+        al = new ArrayList<>();
+        al.add("php");
+        al.add("c");
+        al.add("python");
+        al.add("java");
+        al.add("html");
+        al.add("c++");
+        al.add("css");
+        al.add("javascript");
+
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al );
+
+        flingContainer.setAdapter(arrayAdapter);
+        flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
+            @Override
+            public void removeFirstObjectInAdapter() {
+                // this is the simplest way to delete an object from the Adapter (/AdapterView)
+                Log.d("LIST", "removed object!");
+                al.remove(0);
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onLeftCardExit(Object dataObject) {
+                //Do something on the left!
+                //You also have access to the original object.
+                //If you want to use it just cast it (String) dataObject
+                makeToast(MainActivity.this, "Left!");
+            }
+
+            @Override
+            public void onRightCardExit(Object dataObject) {
+                makeToast(MainActivity.this, "Right!");
+            }
+
+            @Override
+            public void onAdapterAboutToEmpty(int itemsInAdapter) {
+                // Ask for more data here
+                al.add("finish?! ");
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onScroll(float scrollProgressPercent) {
+                View view = flingContainer.getSelectedView();
+                view.findViewById(R.id.item_swipe_right_indicator).setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
+                view.findViewById(R.id.item_swipe_left_indicator).setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
+            }
+        });
+
+
+        // Optionally add an OnItemClickListener
+        flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClicked(int itemPosition, Object dataObject) {
+                makeToast(MainActivity.this, "Clicked!");
+            }
+        });
+
+    }
+
+    static void makeToast(Context ctx, String s){
+        Toast.makeText(ctx, s, Toast.LENGTH_SHORT).show();
+    }
+
+
+    @OnClick(R.id.right)
+    public void right() {
+        /**
+         * Trigger the right event manually.
+         */
+        if(al.isEmpty()){
+            flingContainer.getTopCardListener().selectRight();
+        }
+    }
+
+    @OnClick(R.id.left)
+    public void left() {
+        flingContainer.getTopCardListener().selectLeft();
     }
 
     private void setNavDrawer() {
@@ -75,36 +157,9 @@ public class MainActivity extends AppCompatActivity {
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()) {
 
-                    //Replacing the main content with ContentFragment Which is our Inbox View;
+                    //Replacing the main content with  Which is our Inbox View;
                     case R.id.home:
                         Toast.makeText(getApplicationContext(), "Home Selected", Toast.LENGTH_SHORT).show();
-                       // fragmentTransaction = getFragmentManager().beginTransaction();
-                        getFragmentManager().beginTransaction().
-                                replace(R.id.frame, mFragment, mFragment.TAG).
-                                addToBackStack(mFragment.TAG).
-                                commit();
-                        navigationView.getMenu().getItem(0).setChecked(true);
-                        return true;
-
-                    case R.id.mail:
-                        Toast.makeText(getApplicationContext(), "Mail Selected", Toast.LENGTH_SHORT).show();
-                        ContentFragment mailFragment = new ContentFragment();
-                        fragmentTransaction = getFragmentManager().beginTransaction();
-                        fragmentTransaction.
-                                replace(R.id.frame, mailFragment, "MAIL").
-                                commit();
-                        navigationView.getMenu().getItem(1).setChecked(true);
-                        return true;
-
-                    case R.id.settings:
-                        Toast.makeText(getApplicationContext(), "Setting Selected", Toast.LENGTH_SHORT).show();
-                        SettingsFragment settingsFragment = new SettingsFragment();
-                        fragmentTransaction = getFragmentManager().beginTransaction();
-                        fragmentTransaction.
-                                replace(R.id.frame, settingsFragment, "SETTINGS").
-                                addToBackStack("SETTINGS").
-                                commit();
-                        navigationView.getMenu().getItem(2).setChecked(true);
                         return true;
 
                     default:
@@ -159,12 +214,4 @@ public class MainActivity extends AppCompatActivity {
 
             return super.onOptionsItemSelected(item);
         }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        //Save the fragment's instance
-        getFragmentManager().putFragment(outState, mFragment.TAG, mFragment);
-    }
-
 }
